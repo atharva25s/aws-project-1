@@ -1,0 +1,15 @@
+{
+	"auth": {
+		"aws1277276d1": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": []
+		}
+	},
+	"storage": {
+		"s3aws1": {
+			"service": "S3",
+			"providerPlugin": "awscloudformation"
+		}
+	}
+}
