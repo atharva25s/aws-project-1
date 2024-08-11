@@ -1,20 +1,36 @@
 {
-    "prod": {
-        "awscloudformation": {
-            "AuthRoleName": "amplify-aws1-prod-194851-authRole",
-            "UnauthRoleArn": "arn:aws:iam::211125516656:role/amplify-aws1-prod-194851-unauthRole",
-            "AuthRoleArn": "arn:aws:iam::211125516656:role/amplify-aws1-prod-194851-authRole",
-            "Region": "us-east-1",
-            "DeploymentBucketName": "amplify-aws1-prod-194851-deployment",
-            "UnauthRoleName": "amplify-aws1-prod-194851-unauthRole",
-            "StackName": "amplify-aws1-prod-194851",
-            "StackId": "arn:aws:cloudformation:us-east-1:211125516656:stack/amplify-aws1-prod-194851/e2dbc460-51a2-11ef-b539-1237e4d1b883",
-            "AmplifyAppId": "don4tea0edrmg"
+  "prod": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-thebookstore-prod-15d33-authRole",
+      "UnauthRoleArn": "arn:aws:iam::211125516656:role/amplify-thebookstore-prod-15d33-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::211125516656:role/amplify-thebookstore-prod-15d33-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-thebookstore-prod-15d33-deployment",
+      "UnauthRoleName": "amplify-thebookstore-prod-15d33-unauthRole",
+      "StackName": "amplify-thebookstore-prod-15d33",
+      "StackId": "arn:aws:cloudformation:us-east-1:211125516656:stack/amplify-thebookstore-prod-15d33/e37e6400-56e7-11ef-81b0-12ad8a23df6d",
+      "AmplifyAppId": "d1b9kgyzced6j7"
+    },
+    "categories": {
+      "auth": {
+        "thebookstore945d6809": {}
+      },
+      "function": {
+        "processPayment": {
+          "deploymentBucketName": "amplify-thebookstore-prod-15d33-deployment",
+          "s3Key": "amplify-builds/processPayment-587273496e33596a4830-build.zip"
         },
-        "categories": {
-            "auth": {
-                "aws1277276d1": {}
-            }
+        "createOrder": {
+          "deploymentBucketName": "amplify-thebookstore-prod-15d33-deployment",
+          "s3Key": "amplify-builds/createOrder-745654785a6130346e56-build.zip"
         }
+      },
+      "storage": {
+        "TheBookImages": {}
+      },
+      "api": {
+        "thebookstore": {}
+      }
     }
+  }
 }

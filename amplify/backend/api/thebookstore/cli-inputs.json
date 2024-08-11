@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "serviceConfiguration": {
+    "apiName": "thebookstore",
+    "serviceName": "AppSync",
+    "defaultAuthType": {
+      "mode": "AMAZON_COGNITO_USER_POOLS",
+      "cognitoUserPoolId": "auththebookstore945d6809"
+    },
+    "additionalAuthTypes": [
+      {
+        "mode": "API_KEY",
+        "expirationTime": 360,
+        "apiKeyExpirationDate": "2025-08-05T07:25:43.063Z",
+        "keyDescription": "Guest user access"
+      }
+    ]
+  }
+}
