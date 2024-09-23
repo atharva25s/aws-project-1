@@ -15,6 +15,7 @@ import Admin from './pages/Admin';
 // Components
 import Header from "./components/Header";
 
+
 // Amplify Configurations
 import awsExports from "./aws-exports";
 Amplify.configure(awsExports);
@@ -27,8 +28,8 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/checkout" element={<Checkout />} />
-        <Route path="/books" element={<Books />} />
         <Route path="/books/:id" element={<BookDetails />} />
+        <Route path="/books" element={<Books />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="*" element={<Error />} />
       </Routes>

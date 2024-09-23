@@ -38,7 +38,7 @@ const BookDetails = () => {
         </button>
       </div>
     </section>
-  );
+  )
 };
 
 export default BookDetails;

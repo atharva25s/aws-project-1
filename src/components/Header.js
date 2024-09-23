@@ -1,32 +1,41 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import bookstorelogo from '../assets/book-store-logo.jpg'; 
 
 const Header = () => {
+    const [menubar , setMenubar] = useState(false)
     return (
-        <header className="main-head">
-            <nav aria-label="Main Navigation">
-                <h1 id="logo">
-                    <Link to="/" aria-label="Home">
-                        Wisdomly
-                    </Link>
-                </h1>
-                <ul>
-                    <li>
-                        <Link to="/" aria-label="Go to Home page">Home</Link>
-                    </li>
-                    <li>
-                        <Link to="/books" aria-label="Go to Books page">Books</Link>
-                    </li>
-                    <li>
-                        <Link to="/cart" aria-label="Go to Cart page">Cart</Link>
-                    </li>
-                    <li>
-                        <Link to="/checkout" aria-label="Go to Checkout page">Checkout</Link>
-                    </li>
-                </ul>
-            </nav>
-        </header>
-    );
+        <>
+        <div className=' bg-[#181618] flex flex-row justify-between items-center py-4 text-white font-semibold px-10'>
+            <Link to='' className='w-[60px] max-md:w-[40px]'><img src={bookstorelogo} className=' rounded-[15px]' alt="" /></Link>
+            <div className=' flex flex-row justify-center items-center text-2xl gap-16 py-2 max-md:hidden'>
+                <Link to='/' className='h-fit hover:text-[#c87f21]' >Home</Link>
+                <Link to = '/books' className=' h-fit hover:text-[#c87f21]' >Books</Link>
+                <Link to = '/cart' className='h-fit hover:text-[#c87f21]' >Cart</Link>
+                <Link to = '/checkout' className='h-fit hover:text-[#c87f21]' >Checkout</Link>
+            </div>
+
+            <Link  to='contact' className=' max-md:hidden px-10 py-2 text-white border-2 border-white rounded  bg-none hover:bg-white hover:text-black  transition-all'>Contact</Link>
+
+            <button className='md:hidden' onClick={()=>{
+                setMenubar(true);
+                console.log(menubar)}}>Menu</button>
+        </div>
+
+        <div className={` md:hidden fixed right-0 top-0 z-10 h-full w-[80%] overflow-hidden bg-[#181618] ${menubar? 'translate-x-0' : 'translate-x-[600px]'} transition-all duration-300  flex flex-col items-end gap-5 px-4 text-white text-2xl`}>
+            <button className='text-white text-3xl py-2 px-4 my-2 border-white border-2' onClick={()=>{setMenubar(false)
+            }}>X</button>
+            <div className='border-b-2 border-white w-full my-2'></div>
+            <Link to='/' className='h-fit text-2xl  hover:text-gray-500 ' onClick={()=>setMenubar(false)} >Home</Link>
+                <Link to = '/books' className='hover:text-gray-500' onClick={()=>setMenubar(false)} >Books</Link>
+                <Link to = '/cart' className='  hover:text-[#c87f21]' onClick={()=>setMenubar(false)}>Cart</Link>
+                <Link  to='/checkout' className='hover:text-gray-500' onClick={()=>setMenubar(false)}>Checkout</Link>
+
+
+        </div>
+        </>
+    )
 };
 
 export default Header;

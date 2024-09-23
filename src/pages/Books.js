@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { Link } from "react-router-dom";
 import { BookContext } from '../context/books';
+import backgroundImage from '../assets/jason-leung-D4YrzSwyIEc-unsplash-1024x683.jpg.webp'
 
 const Books = () => {
     const { books } = useContext(BookContext);
@@ -10,16 +11,26 @@ const Books = () => {
     }
 
     return (
+        <div 
+        style={{ 
+            backgroundImage: `url(${backgroundImage})`, 
+            backgroundSize: 'cover', 
+            backgroundPosition: 'center', 
+            height: '100vh' // Adjust height as needed 
+        }}
+    >
         <section className="books">
             {books.map(({ image, id, title }) => (
                 <article key={id} className="book">
                     <div className="book-image">
                         <img src={image} alt={title} />
                     </div>
-                    <Link to={`books/${id}`} className="btn book__link">Details</Link>
+                    <Link to={`/books/${id}`} className="btn book__link">{title}</Link>
                 </article>
             ))}
         </section>
+    </div>
+    
     );
 };
 

@@ -2,18 +2,28 @@ import React, { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { Authenticator, Button, useAuthenticator, useTheme, View, Image, Text, Heading } from '@aws-amplify/ui-react';
 import { generateClient } from '@aws-amplify/api';
-import { uploadData,  getUrl } from '@aws-amplify/storage'; 
-import {createBook} from '../graphql/mutations';
-
+import { uploadData, getUrl} from '@aws-amplify/storage'; 
+import {createBook} from '../api/mutations';
+//import { StorageImage } from '@aws-amplify/ui-react-storage';
+import '@aws-amplify/ui-react/styles.css';
 import config from '../aws-exports.js';
 import { Amplify } from 'aws-amplify';
 
+
 Amplify.configure(config);
+const {
+  aws_user_files_s3_bucket_region: region,
+  aws_user_files_s3_bucket: bucket
+} = config
+
 // Initialize API client
 const client = generateClient();
 
+
+
 const Admin = () => {
     const [image, setImage] = useState(null);
+    
     const [bookDetails, setBookDetails] = useState({
         title: "", 
         description: "", 
@@ -24,7 +34,7 @@ const Admin = () => {
     });
 
     const { user, signOut } = useAuthenticator((context) => [context.user])
-    console.log(user)
+     //console.log(user)
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -33,6 +43,7 @@ const Admin = () => {
             await client.graphql({ query: createBook, variables: { input: bookDetails } });
             setBookDetails({ title: "", description: "", image: "", author: "", price: "", featured: false });
             setImage(null);
+            console.log('Complete upload')
         } catch (err) {
             console.log('Error creating book:', err);
         }
@@ -40,21 +51,27 @@ const Admin = () => {
 
     const handleImageUpload = async (e) => {
         const file = e.target.files[0];
-        const extension = file.name.split(".")[1];
-        const key = `images/${uuidv4()}.${extension}`;
+        const extension = file.name.split(".").pop();
+        const key = `public/images/${uuidv4()}.${extension}`;
+        const urls = `https://${bucket}.s3.${region}.amazonaws.com/${key}`
 
         try {
-            const result = await uploadData({ key, data: file, options: { accessLevel: 'public', contentType: file.type } });
-
-            const uploadedImage = await getUrl({ key, options: { accessLevel: 'public' } });
-
-            setImage(uploadedImage);
-            setBookDetails((prevDetails) => ({ ...prevDetails, image: uploadedImage }));
-            console.log('Upload succeeded:', result);
-            return result;
+            
+            uploadData( {path : key, data : file, options: { accessLevel: 'public',contentType:file.type}});
+            console.log("Upload success");
         } catch (err) {
             console.log('Error uploading image:', err);
             throw err;
+        }
+        try{
+          const uploadedImage = await getUrl({path : key});
+           
+            setImage(uploadedImage);
+            setBookDetails({ ...bookDetails, image: urls });
+            console.log('download Sucessful');
+        } catch (err) {
+          console.log('Error downloading image:', err);
+          throw err;
         }
     };
 
@@ -302,7 +319,7 @@ const Admin = () => {
                                     <input
                                         type="file"
                                         accept="image/*"
-                                        onChange={handleImageUpload}
+                                        onChange= {(e) => handleImageUpload(e)}
                                     />
                                 )}
                             </div>

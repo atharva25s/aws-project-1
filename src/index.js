@@ -12,15 +12,15 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 // Render the app with providers
 root.render(
   <React.StrictMode>
-  <Authenticator.Provider> 
-    <BookProvider>
-      <CartProvider>
-        <View>
-          <App />
-        </View>  
-      </CartProvider>
-    </BookProvider>
-  </Authenticator.Provider>   
+    <Authenticator.Provider> 
+      <View>
+        <BookProvider>
+          <CartProvider>
+            <App /> 
+          </CartProvider>
+        </BookProvider>
+      </View> 
+    </Authenticator.Provider>   
   </React.StrictMode>
 );
 
