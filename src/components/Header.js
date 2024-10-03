@@ -23,14 +23,14 @@ const Header = () => {
                 console.log(menubar)}}>Menu</button>
         </div>
 
-        <div className={` md:hidden fixed right-0 top-0 z-10 h-full w-[80%] overflow-hidden bg-[#181618] ${menubar? 'translate-x-0' : 'translate-x-[600px]'} transition-all duration-300  flex flex-col items-end gap-5 px-4 text-white text-2xl`}>
-            <button className='text-white text-3xl py-2 px-4 my-2 border-white border-2' onClick={()=>{setMenubar(false)
+        <div className={` md:hidden fixed right-0 top-0 z-10 h-full py-4 w-[80%] overflow-hidden bg-[#181618] ${menubar? 'translate-x-0' : 'translate-x-[600px]'} transition-all duration-300  flex flex-col items-start gap-5 px-4 text-white text-2xl`}>
+            <button className='text-white text-3xl py-2 self-end px-4 my-2 border-white border-2' onClick={()=>{setMenubar(false)
             }}>X</button>
             <div className='border-b-2 border-white w-full my-2'></div>
-            <Link to='/' className='h-fit text-2xl  hover:text-gray-500 ' onClick={()=>setMenubar(false)} >Home</Link>
-                <Link to = '/books' className='hover:text-gray-500' onClick={()=>setMenubar(false)} >Books</Link>
-                <Link to = '/cart' className='  hover:text-[#c87f21]' onClick={()=>setMenubar(false)}>Cart</Link>
-                <Link  to='/checkout' className='hover:text-gray-500' onClick={()=>setMenubar(false)}>Checkout</Link>
+            <Link to='/' className='h-fit text-3xl  hover:text-gray-500 my-4 w-full ' onClick={()=>setMenubar(false)} >Home</Link>
+                <Link to = '/books' className='h-fit text-3xl  hover:text-gray-500 my-4  w-full ' onClick={()=>setMenubar(false)} >Books</Link>
+                <Link to = '/cart' className='h-fit text-3xl  hover:text-gray-500 my-4  w-full ' onClick={()=>setMenubar(false)}>Cart</Link>
+                <Link  to='/checkout' className='h-fit text-3xl  hover:text-gray-500 my-4  w-full ' onClick={()=>setMenubar(false)}>Checkout</Link>
 
 
         </div>

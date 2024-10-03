@@ -23,17 +23,19 @@ const Home = () => {
                     <p className="text-white">To provide free access to a wide range of books for all book lovers, fostering a love for reading.</p>
                 </section>
             </div>
-            <section className="flex-col justify-center items-center bg-[#2b2728]  ">
+            <section className="flex-col w-full items-center  justify-center bg-[#2b2728]  ">
                 <header className="featured-head">
                     <h3>Featured Collection</h3>
                 </header>
-                <div className="text-center gap-4 flex  items-center text-3xl max-sm:text-2xl justify-center p-8 bg-[#2B2629] m-4 max-md:w-full font-serif">
+                <div className=" bg-[#2B2629] m-4 font-serif flex flex-row max-md:flex-col items-center justify-center flex-wrap self-center gap-4">
                     {featured.map(({ id, image, title }) => (
                         <article key={id} className="book featured-book">
                             <div className="book-image">
                                 <img src={image} alt={title} />
                             </div>
-                            <Link to={`/books/${id}`} className="btn book-link">{title}</Link>
+                            <Link to={`/books/${id}`} className="btn book-link">
+                                {title.length > 10 ? `${title.slice(0, 8)}...` : title}
+                            </Link>
                         </article>
                     ))}
                 </div>

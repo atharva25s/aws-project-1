@@ -4,7 +4,6 @@ import { Authenticator, Button, useAuthenticator, useTheme, View, Image, Text, H
 import { generateClient } from '@aws-amplify/api';
 import { uploadData, getUrl} from '@aws-amplify/storage'; 
 import {createBook} from '../api/mutations';
-//import { StorageImage } from '@aws-amplify/ui-react-storage';
 import '@aws-amplify/ui-react/styles.css';
 import config from '../aws-exports.js';
 import { Amplify } from 'aws-amplify';
