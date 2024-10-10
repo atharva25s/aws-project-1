@@ -12,19 +12,20 @@ const Cart = () => {
   }
 
   return (
-    <section className="cart">
-      <header>
+    <div className='h-[80vh] max-md:h-[150vh] flex flex-col justify-center items-center'>
+    <section className="cart border-gray-500 border-[1px]  py-10">
+      <header className='border-[1px] border-b-slate-700'>
         <h2>My Cart</h2>
       </header>
-      <div className="cart-wrapper">
+      <div className="cart-wrapper px-10 border-[1px] border-b-gray-500">
         {cart.map(({ id, title, price, image, amount }) => (
           <article key={id} className="cart-item">
-            <div className="image">
-              <img src={image} alt="cart item" />
+            <div className="image" >
+              <img className='border-[1px] border-gray-600' src={image} alt="cart item" />
             </div>
             <div className="details">
-              <p>{title}</p>
-              <p>$ {price}</p>
+              <p className='font-semibold' >{title}</p>
+              <p>&#8377; {price}</p>
             </div>
             <div className="amount">
               <button onClick={() => increaseAmount(id)}><FiChevronUp /></button>
@@ -35,12 +36,13 @@ const Cart = () => {
         ))}
       </div>
       <div>
-        <h3>Total: $ {total}</h3>
+        <h3 className='my-8'>Total: &#8377; {total}</h3>
       </div>
       <div>
-        <button className="btn" onClick={() => navigate('/checkout')}>Checkout</button>
+        <button className="btn rounded-lg px-4 text-center pb-[10px] mt-6" onClick={() => navigate('/checkout')}>Checkout</button>
       </div>
     </section>
+    </div>
   );
 };
 

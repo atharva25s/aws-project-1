@@ -27,7 +27,7 @@ const BookDetails = () => {
             <img
               id="book-img"
               src={book.image} 
-              className="w-full max-w-[400px] max-md:w-[50%] rounded-xl hover:scale-[1.05] transition-all duration-500"
+              className="w-full max-w-[400px] max-md:w-[50%] rounded-xl border-[1px] border-black"
               alt={book.title}
             />
           </div>
@@ -35,10 +35,10 @@ const BookDetails = () => {
             id="details"
             className="flex flex-col px-6 justify-around rounded-2xl border-2 border-gray-700 my-4 min-h-[600px] h-fit w-[55%] max-md:w-[85%] mx-4 "
           >
-            <h2 className="font-bold text-3xl my-2 ">
+            <h2 className="font-bold text-5xl my-2 ">
               {book.title}
             </h2>
-            <h3 className="font-semibold text-lg my-2">{book.author}</h3>
+            <h3 className="font-semibold text-3xl my-2 ">{book.author}</h3>
           
             <h4 className="font-semibold text-3xl my-2 flex flex-row items-center">
               <p className="mr-4"> &#8377;{book.price}</p>

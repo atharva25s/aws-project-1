@@ -8,10 +8,13 @@ import { processOrder } from "../api/mutations";
 
 Amplify.configure(config);
 const BookContext = createContext();
-const client = generateClient({
+const client1 = generateClient({
   authMode: 'apiKey' // Adjust as per your authentication type
 });
 
+const client2 = generateClient({
+  authMode: 'userPool'
+})
 const BookProvider = ({ children }) => {
   const [books, setBooks] = useState([]);
   const [featured, setFeatured] = useState([]);
@@ -27,7 +30,7 @@ const BookProvider = ({ children }) => {
       ...orderDetails,
     };
     try {
-      await client.graphql({query: processOrder, variables: { input: payload }});
+      await client2.graphql({query: processOrder, variables: { input: payload }});
       console.log("Order is successful");
     } catch (error) {
       console.error("Order failed:", error);
@@ -38,7 +41,7 @@ const BookProvider = ({ children }) => {
   const fetchBooks = async () => {
     try {
       setLoading(true);
-      const { data } = await client.graphql({
+      const { data } = await client1.graphql({
         query: listBooks,
       });
       const books = data.listBooks.items || [];

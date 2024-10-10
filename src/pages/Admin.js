@@ -388,7 +388,7 @@ const Admin = () => {
                                     </p>
                                 </div>
                                 <div className="submit-form">
-                                    <button className="btn" type="submit">Submit</button>
+                                    <button className="btn rounded-lg px-4 text-center pb-[10px]" type="submit">Submit</button>
                                 </div>
                             </div>
                         </form>

@@ -5,6 +5,7 @@ import FeaturesPage from './FeaturesPage'
 import bookstorelogo from '../assets/book-store-logo.jpg'
 import Footer from "../components/Footer";
 
+
 const Home = () => {
     const { featured } = useContext(BookContext);
 

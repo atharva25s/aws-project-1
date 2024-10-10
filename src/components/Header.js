@@ -1,10 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
-import bookstorelogo from '../assets/book-store-logo.jpg'; 
+import bookstorelogo from '../assets/book-store-logo.jpg';
+import { useAuthenticator, Button } from "@aws-amplify/ui-react"; 
 
 const Header = () => {
     const [menubar , setMenubar] = useState(false)
+    const { user, signOut } = useAuthenticator((context) => [context.user])
     return (
         <>
         <div className=' bg-[#181618] flex flex-row justify-between items-center py-4 text-white font-semibold px-10'>
@@ -13,11 +15,11 @@ const Header = () => {
                 <Link to='/' className='h-fit hover:text-[#c87f21]' >Home</Link>
                 <Link to = '/books' className=' h-fit hover:text-[#c87f21]' >Books</Link>
                 <Link to = '/cart' className='h-fit hover:text-[#c87f21]' >Cart</Link>
-                <Link to = '/checkout' className='h-fit hover:text-[#c87f21]' >Checkout</Link>
             </div>
-
+            <div className='flex flex-row gap-4 max-md:hidden'> 
+            {user &&  <Button className='text-white hover:text-black' onClick={signOut}>Sign Out</Button>}
             <Link  to='contact' className=' max-md:hidden px-10 py-2 text-white border-2 border-white rounded  bg-none hover:bg-white hover:text-black  transition-all'>Contact</Link>
-
+            </div>
             <button className='md:hidden' onClick={()=>{
                 setMenubar(true);
                 console.log(menubar)}}>Menu</button>
@@ -30,7 +32,7 @@ const Header = () => {
             <Link to='/' className='h-fit text-3xl  hover:text-gray-500 my-4 w-full ' onClick={()=>setMenubar(false)} >Home</Link>
                 <Link to = '/books' className='h-fit text-3xl  hover:text-gray-500 my-4  w-full ' onClick={()=>setMenubar(false)} >Books</Link>
                 <Link to = '/cart' className='h-fit text-3xl  hover:text-gray-500 my-4  w-full ' onClick={()=>setMenubar(false)}>Cart</Link>
-                <Link  to='/checkout' className='h-fit text-3xl  hover:text-gray-500 my-4  w-full ' onClick={()=>setMenubar(false)}>Checkout</Link>
+                <Link to='contact' className='h-fit text-3xl  hover:text-gray-500 my-4  w-full ' onClick={()=>setMenubar(false)} >Contact</Link>
 
 
         </div>
